@@ -1,11 +1,10 @@
 const add = (a,b) => a + b
 const subtract = (a,b) => a - b
 const multiply = (a,b) => a * b
-const divide = (a,b) => a / b
+const division = (a,b) => a / b
 
-
-function operator(oprtr, a ,b){
-    return oprtr(a,b)
+function operator(operation, a ,b){
+    return operation(a,b)
 }
 
-console.log(operator(divide,8,2))
+console.log(operator(division,8,2))
