@@ -45,9 +45,11 @@ body {
 .calc-container > #display{
     display: flex;
     padding: 30px;
-    /* border: 20px red solid; */
+    /* border: 1px red solid; */
     color: #E5E7EB;
     justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
 
@@ -61,11 +63,13 @@ body {
     justify-content: center;
     align-items: center; 
     flex-wrap: wrap;
+    box-sizing: content-box;
+    box-shadow: #31425a;
 }
 
 .buttons {
-    /* flex-grow: 1; */
     height: 60px;
     width: 60px;
+    /* flex-grow: 1; */
     /* margin-bottom: auto; */
 }
