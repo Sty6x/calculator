@@ -13,40 +13,50 @@ function operator(operation, a, b) {
 let buttons = document.querySelectorAll('.buttons')
 const display = document.getElementById('display');
 
-// console.log(buttons)
-
-
+// converts nodelist into array Array.from
 let arrButtons = Array.from(buttons);
-let newarr = [];
+// storedValues is now modified and can be used with the operations
+let storedValues = [];
 
-// we want to make a reusable function that returns the numbers inputted
-
-
-function getNumberInput(button) {
-    // this method activates a function on every 'click'
-    // of the user
-    button.addEventListener('click', () => {
-
-        // pushing button.value to newarr array
-        // on every click
-        newarr.push(button.value);
-
-        // concactinating all the numbers inputted on the array
-        // to a new variable for us to display it on the browser
-        // called displayText (a string type) 
-        // can be converted to number type using unary operator "+"
-        let displayText = '';
-        for (let i = 0; i < newarr.length; i++) {
-            displayText += newarr[i];
-        }
-
-        // blitting the displaytext on our display 
-        // on the calculator
-        display.textContent = displayText
-        console.table(displayText)
+// MODIFYING OUR storedValues ARRAY
+function getDisplayValues(buttons) {
+    buttons.addEventListener('click', () => {
+        console.log(buttons.value)
+        storedValues.push(buttons.value)
+        console.log(storedValues)
     })
 }
+arrButtons.forEach(getDisplayValues)
+// MODIFYING OUR storedValues ARRAY
 
-// .map applies a function(getNumberInput) to each button. 
-const getInputNumberDisplay = arrButtons.map(getNumberInput)
+
+
+
+// concatenate the elements of the and displays the value
+// on our calculator display
+function displayText() {
+    arrButtons.forEach(buttons => {
+        buttons.addEventListener('click', () => {
+            let displayValues = '';
+            for (let i = 0; i < storedValues.length; i++) {
+                displayValues += storedValues[i];
+            }
+            display.textContent = displayValues
+        })
+    })
+}
+displayText();
+// concatenate the elements of the and displays the value
+// on our calculator display
+
+
+
+// console logging values
+arrButtons.forEach(buttons => {
+    buttons.addEventListener('click', () => {
+        console.log("storedValues: " + storedValues)
+
+    })
+})
+
 
