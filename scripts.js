@@ -21,7 +21,6 @@ let storedValues = [];
 // MODIFYING OUR storedValues ARRAY
 function getDisplayValues(buttons) {
     buttons.addEventListener('click', () => {
-        console.log(buttons.value)
         storedValues.push(buttons.value)
         console.log(storedValues)
     })
@@ -52,11 +51,43 @@ displayText();
 
 
 // console logging values
-arrButtons.forEach(buttons => {
-    buttons.addEventListener('click', () => {
-        console.log("storedValues: " + storedValues)
+// arrButtons.forEach(buttons => {
+//     buttons.addEventListener('click', () => {
+//         console.log("storedValues: " + storedValues)
 
+//     })
+// })
+
+
+function calculate() {
+    arrButtons.forEach(buttons => {
+        buttons.addEventListener('click', () => {
+            let displayValues = '';    
+            for (let i = 0; i < storedValues.length; i++) {
+                displayValues += storedValues[i];
+                switch (storedValues[i]) {
+                    // if button is "+"
+                    case '+':
+                        // stores the first value
+                        let aValue = displayValues
+                        console.log("first Value: " + aValue)
+                        break;
+                        // if button is "-"
+                    case '-':
+                        console.log('subtraction')
+                        break;
+                        // if button is "x" 
+                    case 'x':
+                        console.log('multiplication')
+                        break;
+                        // if button is "/"
+                    case '/':
+                        console.log('division')
+                        break;
+                }
+            }
+        })
     })
-})
+}
 
-
+calculate()
