@@ -18,33 +18,20 @@ const clearButton = document.querySelector('.clear')
 const arrButtons = Array.from(buttons);
 
 // storedValues is now modified and can be used with the operations
-let storedValues = [];
+let storedCalcValues = [];
 const storedDisplayValues = []
 display.textContent = 0; //cheat
 
-// MODIFYING OUR storedValues ARRAY
-// Calculator Values
-arrButtons.forEach(getArrayValues)
+// MODIFYING OUR STORED ARRAYs
+function getValues(value) {
+    arrButtons.forEach((buttons) =>
+        buttons.addEventListener('click', () => {
+            value.push(buttons.value)
+        }))
 
-function getArrayValues(buttons) {
-    buttons.addEventListener('click', () => {
-        storedValues.push(buttons.value)
-        console.log('for calculation')
-        console.log(storedValues)
-    })
 }
-
-
-// Calculator Display Values
-arrButtons.forEach(getDisplayValues)
-
-function getDisplayValues(buttons) {
-    buttons.addEventListener('click', () => {
-        storedDisplayValues.push(buttons.value)
-        console.log('for display')
-        console.log(storedDisplayValues)
-    })
-}
+getValues(storedDisplayValues)
+getValues(storedCalcValues)
 // MODIFYING OUR storedValues ARRAY
 
 
@@ -57,9 +44,9 @@ function clearValues() {
         storedDisplayValues.pop()
     }
     let j = 0
-    while (j < storedValues.length) {
+    while (j < storedCalcValues.length) {
         j++
-        storedValues.pop()
+        storedCalcValues.pop()
     }
 
     display.textContent = 0;
@@ -77,6 +64,12 @@ function concatValues() {
     return displayValues;
 }
 
+arrButtons.forEach(buttons => {
+    buttons.addEventListener('click', () => {
+        displayText(concatValues());
+    })
+})
+
 
 // on our calculator display
 const displayText = (concatenate) => {
@@ -86,12 +79,6 @@ const displayText = (concatenate) => {
 
 
 
-arrButtons.forEach(buttons => {
-    buttons.addEventListener('click', () => {
-
-        displayText(concatValues());
-    })
-})
 
 // make a separate function for the calculator
 
@@ -101,11 +88,13 @@ arrButtons.forEach(buttons => {
 
 function removeOperatorClass(buttons) {
     buttons.addEventListener('click', () => {
+        // console.log(storedDisplayValues)
+        console.log(storedCalcValues)
         if (buttons.classList.contains('operator')) {
             console.log('is operator')
-            storedValues.pop()
-            console.log('popped operator')
-            console.log(storedValues)
+            console.log(storedCalcValues.pop())
+            console.log('^popped operator^')
+            console.log(storedCalcValues)
         }
     })
 }
