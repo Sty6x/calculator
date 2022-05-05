@@ -18,16 +18,31 @@ const clearButton = document.querySelector('.clear')
 const arrButtons = Array.from(buttons);
 
 // storedValues is now modified and can be used with the operations
-const storedValues = [];
+let storedValues = [];
+const storedDisplayValues = []
 display.textContent = 0; //cheat
 
 // MODIFYING OUR storedValues ARRAY
+// Calculator Values
 arrButtons.forEach(getArrayValues)
 
 function getArrayValues(buttons) {
     buttons.addEventListener('click', () => {
         storedValues.push(buttons.value)
+        console.log('for calculation')
         console.log(storedValues)
+    })
+}
+
+
+// Calculator Display Values
+arrButtons.forEach(getDisplayValues)
+
+function getDisplayValues(buttons) {
+    buttons.addEventListener('click', () => {
+        storedDisplayValues.push(buttons.value)
+        console.log('for display')
+        console.log(storedDisplayValues)
     })
 }
 // MODIFYING OUR storedValues ARRAY
@@ -37,10 +52,16 @@ function getArrayValues(buttons) {
 // need to click multiple times
 function clearValues() {
     let i = 0
-    while (i < storedValues.length) {
+    while (i < storedDisplayValues.length) {
         i++
+        storedDisplayValues.pop()
+    }
+    let j = 0
+    while (j < storedValues.length) {
+        j++
         storedValues.pop()
     }
+
     display.textContent = 0;
     console.clear()
 }
@@ -50,8 +71,8 @@ clearButton.addEventListener('click', clearValues)
 
 function concatValues() {
     let displayValues = '';
-    for (let i = 0; i < storedValues.length; i++) {
-        displayValues += storedValues[i];
+    for (let i = 0; i < storedDisplayValues.length; i++) {
+        displayValues += storedDisplayValues[i];
     }
     return displayValues;
 }
@@ -67,23 +88,25 @@ const displayText = (concatenate) => {
 
 arrButtons.forEach(buttons => {
     buttons.addEventListener('click', () => {
+
         displayText(concatValues());
     })
 })
 
 // make a separate function for the calculator
 
+// make a function that checks and removes operator from each button of the array
 // check if any elements of the array contains the "operator"
 // class name and if so delete it from the array
 
 function removeOperatorClass(buttons) {
     buttons.addEventListener('click', () => {
-        console.log(buttons.getAttribute('class'))
         if (buttons.classList.contains('operator')) {
             console.log('is operator')
+            storedValues.pop()
+            console.log('popped operator')
+            console.log(storedValues)
         }
     })
 }
-
-// make a function that checks and removes operator from each button of the array
 arrButtons.map(removeOperatorClass)
