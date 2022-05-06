@@ -39,14 +39,16 @@ getValues(storedCalcValues)
 // need to click multiple times
 function clearValues() {
     let i = 0
+    let j = 0
     while (i < storedDisplayValues.length) {
         i++
         storedDisplayValues.pop()
+
     }
-    let j = 0
     while (j < storedCalcValues.length) {
         j++
         storedCalcValues.pop()
+
     }
 
     display.textContent = 0;
@@ -89,47 +91,50 @@ const displayText = (concatenate) => {
 
 function removeOperatorClass(buttons) {
     buttons.addEventListener('click', () => {
-        // console.log(storedDisplayValues)
         console.log(storedCalcValues)
         if (buttons.classList.contains('operator')) {
-            // console.log('is operator')
             // removes the last value inputted (operator)
-            console.log(storedCalcValues.pop())
+            storedCalcValues.pop()
         }
     })
 }
 arrButtons.map(removeOperatorClass)
 
+function getValuePair() {
+    let a = []
+    let firstPair = 0;
 
-function calculateValue() {
+    for (let i = 0; i < storedCalcValues.length; i++) {
+        a.push(storedCalcValues[i])
+    }
+    console.log("is a array:" + a)
+    console.log(storedCalcValues)
 
-
+    let i = 0;
+    while (i < a.length) {
+        storedCalcValues.pop()
+        i++
+    }
+    console.log("Aarray:" + a)
+    console.log("is storedcalcVal: " + storedCalcValues)
+    
+    return a
 }
+
 
 arrButtons.forEach(buttons => {
     buttons.addEventListener('click', () => {
-        if (buttons.classList.contains('operator')) {
-            console.log('calculate value')
-            calculateValue()
-            let a = []
-            for (let i = 0; i < storedCalcValues.length; i++) {
-                a.push(storedCalcValues[i])
-            }
-            console.log("Aarray:" + a)
-            console.log(storedCalcValues)
-            console.log("Aarray:" + a)
-            if(buttons.value == '='){
-                let b =[]
-                for (let i = 0; i < storedCalcValues.length; i++) {
-                    b.push(storedCalcValues[i])
-                }
-                console.log(b)
-                
-                // console.log(operator(add,a,b))
-            }
-        
-            // removes the last value inputted (operator)
-
+        let a,b;
+        if (buttons.classList.contains('addition')) {
+            // returns array
+            a = getValuePair();
+            console.log(a)
         }
+        if (buttons.classList.contains('equal')) {
+            b = getValuePair()
+            console.log(b)
+            console.log("a and b:" + a,b)
+        }
+        
     })
 })
