@@ -80,6 +80,7 @@ const displayText = (concatenate) => {
 
 
 
+
 // make a separate function for the calculator
 
 // make a function that checks and removes operator from each button of the array
@@ -91,11 +92,44 @@ function removeOperatorClass(buttons) {
         // console.log(storedDisplayValues)
         console.log(storedCalcValues)
         if (buttons.classList.contains('operator')) {
-            console.log('is operator')
+            // console.log('is operator')
+            // removes the last value inputted (operator)
             console.log(storedCalcValues.pop())
-            console.log('^popped operator^')
-            console.log(storedCalcValues)
         }
     })
 }
 arrButtons.map(removeOperatorClass)
+
+
+function calculateValue() {
+
+
+}
+
+arrButtons.forEach(buttons => {
+    buttons.addEventListener('click', () => {
+        if (buttons.classList.contains('operator')) {
+            console.log('calculate value')
+            calculateValue()
+            let a = []
+            for (let i = 0; i < storedCalcValues.length; i++) {
+                a.push(storedCalcValues[i])
+            }
+            console.log("Aarray:" + a)
+            console.log(storedCalcValues)
+            console.log("Aarray:" + a)
+            if(buttons.value == '='){
+                let b =[]
+                for (let i = 0; i < storedCalcValues.length; i++) {
+                    b.push(storedCalcValues[i])
+                }
+                console.log(b)
+                
+                // console.log(operator(add,a,b))
+            }
+        
+            // removes the last value inputted (operator)
+
+        }
+    })
+})
