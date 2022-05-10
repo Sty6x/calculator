@@ -100,40 +100,48 @@ function removeOperatorClass(buttons) {
 }
 arrButtons.map(removeOperatorClass)
 
-function getValuePair() {
-    let a = []
+
+//get values working
+let a = []
+let b = []
+function getValuePair(arr = []) {
+    // let arr = []
     let firstPair = 0;
 
     for (let i = 0; i < storedCalcValues.length; i++) {
-        a.push(storedCalcValues[i])
+        arr.push(storedCalcValues[i])
     }
-    console.log("is a array:" + a)
-    console.log(storedCalcValues)
+    // console.log("is a array:" + arr)
+    // console.log(storedCalcValues)
 
     let i = 0;
-    while (i < a.length) {
+    while (i < arr.length) {
         storedCalcValues.pop()
         i++
     }
-    console.log("Aarray:" + a)
-    console.log("is storedcalcVal: " + storedCalcValues)
+    // console.log("Aarray:" + arr)
+    // console.log("is storedcalcVal: " + storedCalcValues)
     
-    return a
+    return arr
 }
 
+
+// find a way to get the second pair value
 
 arrButtons.forEach(buttons => {
     buttons.addEventListener('click', () => {
         let a,b;
         if (buttons.classList.contains('addition')) {
             // returns array
-            a = getValuePair();
-            console.log(a)
+            aValue = getValuePair(a);
+            
         }
         if (buttons.classList.contains('equal')) {
-            b = getValuePair()
-            console.log(b)
-            console.log("a and b:" + a,b)
+            bValue = getValuePair(b)
+            console.log(aValue)
+            console.log(bValue)
+            console.log(aValue)
+            // console.log("a and b:" + aValue,bValue)
         }
         
     })
