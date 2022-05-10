@@ -40,19 +40,20 @@ getValues(storedCalcValues)
 function clearValues() {
     let i = 0
     let j = 0
-    while (i < storedDisplayValues.length) {
-        i++
-        storedDisplayValues.pop()
+    window.location.reload();
+    // while (i < storedDisplayValues.length) {
+    //     i++
+    //     storedDisplayValues.pop()
 
-    }
-    while (j < storedCalcValues.length) {
-        j++
-        storedCalcValues.pop()
+    // }
+    // while (j < storedCalcValues.length) {
+    //     j++
+    //     storedCalcValues.pop()
 
-    }
+    // }
 
-    display.textContent = 0;
-    console.clear()
+    // display.textContent = 0;
+    // console.clear()
 }
 clearButton.addEventListener('click', clearValues)
 
@@ -129,17 +130,15 @@ function getValue(value) {
 
 arrButtons.forEach(buttons => {
     buttons.addEventListener('click', () => {
-        if (buttons.classList.contains('addition')) {
-            aValue = getValue(getValuePair(a));
-        }
-        if (buttons.classList.contains('equal')) {
-            bValue = getValue(getValuePair(b));
-            console.log(aValue)
-            console.log(bValue)
-            console.log(operator(add, aValue, bValue));
-            // console.log("a and b:" + aValue,bValue)
-        }
-
-
+    if (buttons.classList.contains('subtraction')) {
+        aValue = getValue(getValuePair(a));
+    }
+    if (buttons.classList.contains('equal')) {
+        bValue = getValue(getValuePair(b));
+        console.log(aValue)
+        console.log(bValue)
+        console.log(operator(subtract, aValue, bValue));
+        // console.log("a and b:" + aValue,bValue)
+    }
     })
 })
