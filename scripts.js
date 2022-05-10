@@ -104,45 +104,42 @@ arrButtons.map(removeOperatorClass)
 //get values working
 let a = []
 let b = []
-function getValuePair(arr = []) {
-    // let arr = []
-    let firstPair = 0;
 
+function getValuePair(arr = []) {
     for (let i = 0; i < storedCalcValues.length; i++) {
         arr.push(storedCalcValues[i])
     }
-    // console.log("is a array:" + arr)
-    // console.log(storedCalcValues)
-
     let i = 0;
     while (i < arr.length) {
         storedCalcValues.pop()
         i++
     }
-    // console.log("Aarray:" + arr)
-    // console.log("is storedcalcVal: " + storedCalcValues)
-    
     return arr
 }
 
 
-// find a way to get the second pair value
+function getValue(value) {
+    let retValue = [];
+    for (let i = 0; i < value.length; i++) {
+        retValue += value[i];
+    }
+    return +retValue
+}
+
 
 arrButtons.forEach(buttons => {
     buttons.addEventListener('click', () => {
-        let a,b;
         if (buttons.classList.contains('addition')) {
-            // returns array
-            aValue = getValuePair(a);
-            
+            aValue = getValue(getValuePair(a));
         }
         if (buttons.classList.contains('equal')) {
-            bValue = getValuePair(b)
+            bValue = getValue(getValuePair(b));
             console.log(aValue)
             console.log(bValue)
-            console.log(aValue)
+            console.log(operator(add, aValue, bValue));
             // console.log("a and b:" + aValue,bValue)
         }
-        
+
+
     })
 })
