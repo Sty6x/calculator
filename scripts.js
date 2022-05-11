@@ -9,7 +9,6 @@ function operator(operation, a, b) {
 }
 
 //display text
-
 const buttons = document.querySelectorAll('.buttons')
 const display = document.getElementById('display');
 const clearButton = document.querySelector('.clear')
@@ -37,25 +36,8 @@ getValues(storedCalcValues)
 
 // not emptying storedValues array 
 // need to click multiple times
-function clearValues() {
-    let i = 0
-    let j = 0
-    window.location.reload();
-    // while (i < storedDisplayValues.length) {
-    //     i++
-    //     storedDisplayValues.pop()
-
-    // }
-    // while (j < storedCalcValues.length) {
-    //     j++
-    //     storedCalcValues.pop()
-
-    // }
-
-    // display.textContent = 0;
-    // console.clear()
-}
-clearButton.addEventListener('click', clearValues)
+const clearValue = () => window.location.reload();
+clearButton.addEventListener('click', clearValue)
 
 
 
@@ -67,25 +49,11 @@ function concatValues() {
     return displayValues;
 }
 
-arrButtons.forEach(buttons => {
-    buttons.addEventListener('click', () => {
-        displayText(concatValues());
-    })
-})
-
-
-// on our calculator display
-const displayText = (concatenate) => {
-    display.textContent = concatenate
-}
-// on our calculator display
-
-
+const displayText = (concatenate) => display.textContent = concatenate
 
 
 
 // make a separate function for the calculator
-
 // make a function that checks and removes operator from each button of the array
 // check if any elements of the array contains the "operator"
 // class name and if so delete it from the array
@@ -130,15 +98,14 @@ function getValue(value) {
 
 arrButtons.forEach(buttons => {
     buttons.addEventListener('click', () => {
-    if (buttons.classList.contains('subtraction')) {
-        aValue = getValue(getValuePair(a));
-    }
-    if (buttons.classList.contains('equal')) {
-        bValue = getValue(getValuePair(b));
-        console.log(aValue)
-        console.log(bValue)
-        console.log(operator(subtract, aValue, bValue));
-        // console.log("a and b:" + aValue,bValue)
-    }
+        displayText(concatValues());
+        if (buttons.classList.contains('addition')) {
+            aValue = getValue(getValuePair(a));
+        }
+        if (buttons.classList.contains('equal')) {
+            bValue = getValue(getValuePair(b));
+            displayText(operator(add, aValue, bValue));
+            console.log(operator(add, aValue, bValue));
+        }
     })
 })
