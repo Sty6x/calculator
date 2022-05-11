@@ -36,8 +36,8 @@ getArrValues(storedCalcValues)
 
 // not emptying storedValues array 
 // need to click multiple times
-const clearValue = () => window.location.reload();
-clearButton.addEventListener('click', clearValue)
+// const clearValue = () => { window.location.reload();}
+clearButton.addEventListener('click', () => {window.location.reload();})
 
 
 
@@ -106,10 +106,12 @@ arrButtons.forEach(buttons => {
             aValue = getValue(getValuePair(a));
         }
         if (buttons.classList.contains('equal')) {
+            console.log(typeof bValue)
             bValue = getValue(getValuePair(b));
-            displayText(operator(add, aValue, bValue));
+            // displayText(operator(add, aValue, bValue));
             console.log(operator(add, aValue, bValue));
         }
+     
 
     })
 })

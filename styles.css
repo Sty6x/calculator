@@ -52,6 +52,10 @@ body {
     margin-bottom: 25px;
 }
 
+.clear {
+    width: 180px;
+    height: 40px;
+}
 
 .button-container {
     /* padding: 50px 20px; */
