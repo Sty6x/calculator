@@ -60,7 +60,7 @@ const displayText = (concatenate) => display.textContent = concatenate
 
 function removeOperatorClass(buttons) {
     buttons.addEventListener('click', () => {
-        console.log(storedCalcValues)
+        // console.log(storedCalcValues)
         if (buttons.classList.contains('operator')) {
             // removes the last value inputted (operator)
             storedCalcValues.pop()
@@ -102,16 +102,15 @@ function getValue(value) {
 arrButtons.forEach(buttons => {
     buttons.addEventListener('click', () => {
         displayText(concatValues());
+        console.log(storedCalcValues)
         if (buttons.classList.contains('addition')) {
             aValue = getValue(getValuePair(a));
         }
         if (buttons.classList.contains('equal')) {
-            console.log(typeof bValue)
             bValue = getValue(getValuePair(b));
-            // displayText(operator(add, aValue, bValue));
+            displayText(operator(add, aValue, bValue));
             console.log(operator(add, aValue, bValue));
         }
      
-
     })
 })
