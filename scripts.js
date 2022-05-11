@@ -22,15 +22,15 @@ const storedDisplayValues = []
 display.textContent = 0; //cheat
 
 // MODIFYING OUR STORED ARRAYs
-function getValues(value) {
+function getArrValues(value) {
     arrButtons.forEach((buttons) =>
         buttons.addEventListener('click', () => {
             value.push(buttons.value)
         }))
 
 }
-getValues(storedDisplayValues)
-getValues(storedCalcValues)
+getArrValues(storedDisplayValues)
+getArrValues(storedCalcValues)
 // MODIFYING OUR storedValues ARRAY
 
 
@@ -95,6 +95,9 @@ function getValue(value) {
     return +retValue
 }
 
+// to-do
+// while button is not equal keep operating
+
 
 arrButtons.forEach(buttons => {
     buttons.addEventListener('click', () => {
@@ -107,5 +110,6 @@ arrButtons.forEach(buttons => {
             displayText(operator(add, aValue, bValue));
             console.log(operator(add, aValue, bValue));
         }
+
     })
 })
